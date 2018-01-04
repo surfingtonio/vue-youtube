@@ -1,5 +1,6 @@
 <template>
-  <div class="videoPlayer">
+  <div class="videoPlayer" v-if="video">
+    <span v-html="video.player.embedHtml"></span>
   </div>
 </template>
 

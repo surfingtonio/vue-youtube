@@ -1,16 +1,15 @@
 <template>
   <div class="videoList">
-    <div class="row">
-      <div class="videoItem">
+    <div class="row videoItem" v-for="video in videos">
         <div class="col-12">
-          <div class="thumbnail"></div>
+          <img :alt="video.snippet.title"
+               :src="video.snippet.thumbnails.medium.url"
+               :width="168"
+                class="pull-left mr-3">
+          <h3 class="title">{{ video.snippet.title }}</h3>
+          <div class="author">{{ video.snippet.channelTitle }}</div>
+          <!--<div class="views">{{ video.statistics.viewCount }} views</div>-->
         </div>
-        <div class="col-12">
-          <h3 class="title">Video Title</h3>
-          <div class="author">The Author</div>
-          <div class="views">1.1M views</div>
-        </div>
-      </div>
     </div>
   </div>
 </template>
@@ -28,12 +27,10 @@
       margin-bottom: 1.5rem;
     }
       .thumbnail {
-        background: #000;
-        width: 150px;
-        height: 100px;
       }
         .title {
           font-size: 1rem;
+          margin: 0;
         }
         .author {
           font-size: .9em;

@@ -1,21 +1,21 @@
 <template>
   <div class="videoDetails">
     <div class="heading">
-      <h2>Video Title</h2>
-      <h3>142,936 views</h3>
+      <h2>{{ video.snippet.title }}</h2>
+      <h3>{{ video.statistics.viewCount }} views</h3>
     </div>
     <div class="details">
       <div class="avatar">
-        <img src="../assets/logo.png" alt="Avatar" width="30" height="30">
+        <img src="../assets/logo.png" alt="Avatar" width="30" height="30" class="pull-left">
         <div class="author">
-          The Author
+          {{ video.snippet.channelTitle }}
         </div>
         <div class="publishDate">
-          Published on January 3, 2018
+          {{ video.snippet.publishedAt }}
         </div>
       </div>
       <div class="content">
-        Some video description
+        {{ video.snippet.description }}
       </div>
     </div>
   </div>
