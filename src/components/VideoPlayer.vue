@@ -1,13 +1,55 @@
 <template>
   <div class="videoPlayer" v-if="video">
     <span v-html="video.player.embedHtml"></span>
+    <VideoDetails :video="video"/>
   </div>
 </template>
 
 <script>
+  import Axios from 'axios'
+  import VideoDetails from './VideoDetails'
+
   export default {
     name: 'videoPlayer',
-    props: [ 'video' ]
+    components: { VideoDetails },
+    props: [ 'videoId' ],
+
+    data () {
+      return {
+        video: ''
+      }
+    },
+
+    created () {
+      this.fetchVideo()
+    },
+
+    methods: {
+
+      fetchVideo () {
+        Axios.get('https://www.googleapis.com/youtube/v3/videos', {
+          params: {
+            key: 'AIzaSyDYBfUyaiZo8V4SQxVBy3JESguMwRa-0Cs',
+            part: 'snippet,player,statistics',
+            maxWidth: 730,
+            id: this.videoId
+          }
+        })
+          .then(res => {
+            this.video = res.data.items[0]
+          })
+      }
+
+    },
+
+    watch: {
+
+      videoId () {
+        this.fetchVideo()
+      }
+
+    }
+
   }
 </script>
 

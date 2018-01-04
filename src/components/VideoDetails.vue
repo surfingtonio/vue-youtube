@@ -1,5 +1,5 @@
 <template>
-  <div class="videoDetails">
+  <div class="videoDetails" v-if="video">
     <div class="heading">
       <h2>{{ video.snippet.title }}</h2>
       <h3>{{ video.statistics.viewCount }} views</h3>
