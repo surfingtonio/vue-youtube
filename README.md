@@ -1,6 +1,6 @@
 # vue-youtube
 
-> A Vue.js project
+> A simple Youtube clone using Vue.js and Youtube Data API.
 
 ## Build Setup
 
