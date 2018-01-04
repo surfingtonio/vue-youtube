@@ -7,7 +7,7 @@
           <VideoPlayer :videoId="videoId"/>
         </div>
         <div class="col-md-4">
-          <VideoList :videos="videos"/>
+          <VideoList :videoIds="videoIds"/>
         </div>
       </div>
     </div>
@@ -28,7 +28,7 @@
       return {
         'q': 'samsung s8',
         'videoId': '',
-        'videos': []
+        'videoIds': []
       }
     },
 
