@@ -53,7 +53,6 @@
           .then(res => {
             this.videos = res.data.items
             this.videoId = this.videos[0].id.videoId
-            console.log(this.videos)
 
             Axios.get('https://www.googleapis.com/youtube/v3/videos', {
               params: {
@@ -65,7 +64,6 @@
             })
               .then(res => {
                 this.video = res.data.items[0]
-                console.log(this.video)
               })
           })
       },
