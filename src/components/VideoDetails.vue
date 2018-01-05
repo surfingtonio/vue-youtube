@@ -23,6 +23,7 @@
 <script>
   import Axios from 'axios'
   import moment from 'moment'
+  import linkifyHtml from 'linkifyjs/html'
 
   export default {
     name: 'videoDetails',
@@ -69,7 +70,8 @@
 
       videoDescription () {
         if (this.video) {
-          return this.video.snippet.description.replace(/(?:\r\n|\r|\n)/g, '<br />')
+          let desc = linkifyHtml(this.video.snippet.description)
+          return desc.replace(/(?:\r\n|\r|\n)/g, '<br />')
         } else {
           return ''
         }
