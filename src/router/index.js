@@ -5,11 +5,16 @@ import Page from '@/Page'
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
+  // mode: 'history',
   routes: [
     {
       path: '/',
-      name: 'Page',
+      name: 'Home',
+      component: Page
+    },
+    {
+      path: '/watch/:id',
+      name: 'Watch',
       component: Page
     }
   ]

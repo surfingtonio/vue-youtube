@@ -27,7 +27,7 @@
     data () {
       return {
         'q': 'samsung s8',
-        'videoId': '',
+        'videoId': this.$route.params.id || '',
         'videoIds': []
       }
     },
@@ -39,15 +39,19 @@
     methods: {
 
       fetchVideos () {
-        Axios.get('https://www.googleapis.com/youtube/v3/search', {
-          params: {
-            key: 'AIzaSyDYBfUyaiZo8V4SQxVBy3JESguMwRa-0Cs',
-            type: 'video',
-            part: 'snippet',
-            maxResults: 10,
-            q: this.q
-          }
-        })
+        let params = {
+          key: 'AIzaSyDYBfUyaiZo8V4SQxVBy3JESguMwRa-0Cs',
+          type: 'video',
+          part: 'snippet',
+          maxResults: 10
+        }
+        if (this.videoId) {
+          params = { ...params, relatedToVideoId: this.videoId }
+        } else {
+          params = { ...params, q: this.q }
+        }
+
+        Axios.get('https://www.googleapis.com/youtube/v3/search', { params })
           .then(res => {
             let video = res.data.items.shift()
             this.videoId = video.id.videoId
