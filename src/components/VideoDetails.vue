@@ -86,7 +86,7 @@
     watch: {
 
       video () {
-        this.fetchChanel()
+        this.fetchChannel()
       }
 
     }
