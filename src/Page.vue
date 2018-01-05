@@ -42,6 +42,7 @@
         Axios.get('https://www.googleapis.com/youtube/v3/search', {
           params: {
             key: 'AIzaSyDYBfUyaiZo8V4SQxVBy3JESguMwRa-0Cs',
+            type: 'video',
             part: 'snippet',
             maxResults: 10,
             q: this.q
