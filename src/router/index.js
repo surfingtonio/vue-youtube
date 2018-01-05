@@ -16,6 +16,10 @@ export default new Router({
       path: '/watch/:id',
       name: 'Watch',
       component: Page
+    },
+    {
+      path: '*',
+      redirect: '/'
     }
   ]
 })
