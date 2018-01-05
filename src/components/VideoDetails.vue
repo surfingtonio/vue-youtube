@@ -2,7 +2,7 @@
   <div class="videoDetails" v-if="video">
     <div class="heading">
       <h2>{{ video.snippet.title }}</h2>
-      <div class="viewCount">{{ video.statistics.viewCount }} views</div>
+      <div class="viewCount">{{ viewCount }} views</div>
     </div>
     <div class="details">
       <img width="48" height="48" class="avatar pull-left rounded-circle mr-2"
@@ -54,6 +54,18 @@
           .then(res => {
             this.channel = res.data.items[0]
           })
+      }
+
+    },
+
+    computed: {
+
+      viewCount () {
+        if (this.video) {
+          return parseInt(this.video.statistics.viewCount).toLocaleString()
+        } else {
+          return ''
+        }
       }
 
     },
