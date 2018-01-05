@@ -2,7 +2,7 @@
   <div class="videoDetails" v-if="video">
     <div class="heading">
       <h2>{{ video.snippet.title }}</h2>
-      <h3>{{ video.statistics.viewCount }} views</h3>
+      <div class="viewCount">{{ video.statistics.viewCount }} views</div>
     </div>
     <div class="details">
       <img width="48" height="48" class="avatar pull-left rounded-circle mr-2"
@@ -12,6 +12,9 @@
       <h3 class="author">
         {{ video.snippet.channelTitle }}
       </h3>
+      <div class="publishedAt">
+        {{ video.snippet.publishedAt }}
+      </div>
       <div class="content">
         {{ video.snippet.description }}
       </div>
@@ -76,7 +79,7 @@
   h2 {
     font-size: 1.3rem;
   }
-  h3 {
+  .viewCount {
     font-size: 1rem;
     font-weight: 100;
     color: #888;
@@ -85,7 +88,16 @@
     padding: .5rem 0;
   }
   .avatar {}
+  .author {
+    font-size: 1rem;
+    margin: 0;
+  }
+  .publishedAt {
+    color: #888;
+    font-size: .8rem;
+  }
   .content {
-    padding: .5rem 0;
+    font-size: 1rem;
+    padding: 1rem 0;
   }
 </style>
