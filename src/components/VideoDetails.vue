@@ -13,7 +13,7 @@
         {{ video.snippet.channelTitle }}
       </h3>
       <div class="publishedAt">
-        {{ video.snippet.publishedAt }}
+        {{ publishedAt }}
       </div>
       <div class="content" v-html="videoDescription"></div>
     </div>
@@ -22,6 +22,7 @@
 
 <script>
   import Axios from 'axios'
+  import moment from 'moment'
 
   export default {
     name: 'videoDetails',
@@ -72,6 +73,10 @@
         } else {
           return ''
         }
+      },
+
+      publishedAt () {
+        return moment(this.video.snippet.publishedAt).fromNow()
       }
 
     },
