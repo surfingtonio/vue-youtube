@@ -5,15 +5,13 @@
       <h3>{{ video.statistics.viewCount }} views</h3>
     </div>
     <div class="details">
-      <div class="avatar">
-        <img src="../assets/logo.png" alt="Avatar" width="30" height="30" class="pull-left">
-        <div class="author">
-          {{ video.snippet.channelTitle }}
-        </div>
-        <div class="publishDate">
-          {{ video.snippet.publishedAt }}
-        </div>
-      </div>
+      <img width="48" height="48" class="avatar pull-left rounded-circle mr-2"
+           :alt="channel.snippet.title"
+           :src="channel.snippet.thumbnails.medium.url"
+           v-if="channel">
+      <h3 class="author">
+        {{ video.snippet.channelTitle }}
+      </h3>
       <div class="content">
         {{ video.snippet.description }}
       </div>
@@ -22,9 +20,49 @@
 </template>
 
 <script>
+  import Axios from 'axios'
+
   export default {
     name: 'videoDetails',
-    props: [ 'video' ]
+    props: [ 'video' ],
+
+    data () {
+      return {
+        channel: ''
+      }
+    },
+
+    created () {
+      this.fetchChannel()
+    },
+
+    methods: {
+
+      fetchChannel () {
+        if (!this.video) return
+
+        Axios.get('https://www.googleapis.com/youtube/v3/channels', {
+          params: {
+            key: 'AIzaSyDYBfUyaiZo8V4SQxVBy3JESguMwRa-0Cs',
+            part: 'snippet',
+            id: this.video.snippet.channelId
+          }
+        })
+          .then(res => {
+            this.channel = res.data.items[0]
+          })
+      }
+
+    },
+
+    watch: {
+
+      video () {
+        this.fetchChanel()
+      }
+
+    }
+
   }
 </script>
 
