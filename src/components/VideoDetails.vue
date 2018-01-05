@@ -13,7 +13,7 @@
         {{ video.snippet.channelTitle }}
       </h3>
       <div class="publishedAt">
-        {{ publishedAt }}
+        Published {{ publishedAt }}
       </div>
       <div class="content" v-html="videoDescription"></div>
     </div>
