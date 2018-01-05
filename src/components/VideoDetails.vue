@@ -15,9 +15,7 @@
       <div class="publishedAt">
         {{ video.snippet.publishedAt }}
       </div>
-      <div class="content">
-        {{ video.snippet.description }}
-      </div>
+      <div class="content" v-html="videoDescription"></div>
     </div>
   </div>
 </template>
@@ -63,6 +61,14 @@
       viewCount () {
         if (this.video) {
           return parseInt(this.video.statistics.viewCount).toLocaleString()
+        } else {
+          return ''
+        }
+      },
+
+      videoDescription () {
+        if (this.video) {
+          return this.video.snippet.description.replace(/(?:\r\n|\r|\n)/g, '<br />')
         } else {
           return ''
         }
