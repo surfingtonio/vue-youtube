@@ -6,7 +6,7 @@
          class="pull-left mr-3">
     <h3 class="title">{{ video.snippet.title }}</h3>
     <div class="author">{{ video.snippet.channelTitle }}</div>
-    <div class="views">{{ video.statistics.viewCount }} views</div>
+    <div class="views">{{ viewCount }} views</div>
   </div>
 </template>
 
@@ -15,7 +15,19 @@
     name: 'videoThumbnail',
     props: {
       video: { required: true }
+    },
+
+    computed: {
+
+      viewCount () {
+        if (this.video) {
+          return parseInt(this.video.statistics.viewCount).toLocaleString()
+        } else {
+          return ''
+        }
+      }
     }
+
   }
 </script>
 
