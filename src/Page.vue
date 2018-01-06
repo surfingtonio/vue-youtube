@@ -38,14 +38,9 @@
     methods: {
 
       fetchVideos () {
-        let params = {}
-        if (this.videoId) {
-          params = { ...params, relatedToVideoId: this.videoId }
-        } else {
-          params = { ...params, q: this.q }
-        }
-
-        this.$axios.get('/search', { params })
+        this.$axios.get('/search', this.videoId
+          ? { params: { relatedToVideoId: this.videoId } }
+          : { params: { q: this.q } })
           .then(res => {
             if (!this.videoId) {
               let video = res.data.items.shift()
@@ -57,6 +52,7 @@
 
       updateQuery (q) {
         this.q = q
+        this.videoId = ''
         this.fetchVideos()
       }
 
