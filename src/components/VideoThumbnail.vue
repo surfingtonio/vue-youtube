@@ -1,12 +1,16 @@
 <template>
   <div class="videoThumbnail clearfix">
-    <img :alt="video.snippet.title"
-         :src="video.snippet.thumbnails.medium.url"
-         :width="168"
-         class="pull-left mr-3">
-    <h3 class="title">{{ video.snippet.title }}</h3>
-    <div class="author">{{ video.snippet.channelTitle }}</div>
-    <div class="views">{{ viewCount }} views</div>
+    <a :href="videoUrl" :title="video.snippet.title">
+      <img :alt="video.snippet.title"
+           :src="video.snippet.thumbnails.medium.url"
+           :width="168"
+           class="pull-left mr-3">
+    </a>
+    <a :href="videoUrl" :title="video.snippet.title">
+      <h3 class="title">{{ video.snippet.title }}</h3>
+      <div class="author">{{ video.snippet.channelTitle }}</div>
+      <div class="views">{{ viewCount }} views</div>
+    </a>
   </div>
 </template>
 
@@ -25,7 +29,12 @@
         } else {
           return ''
         }
+      },
+
+      videoUrl () {
+        return '/watch/' + this.video.id
       }
+
     }
 
   }
@@ -34,6 +43,12 @@
 <style scoped>
   .videoThumbnail {
     margin-bottom: .9rem;
+  }
+  .videoThumbnail a {
+    color: #000;
+  }
+  .videoThumbnail a:hover {
+    text-decoration: none;
   }
   h3.title {
     font-size: .9rem;
