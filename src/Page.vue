@@ -53,8 +53,10 @@
 
         Axios.get('https://www.googleapis.com/youtube/v3/search', { params })
           .then(res => {
-            let video = res.data.items.shift()
-            this.videoId = video.id.videoId
+            if (!this.videoId) {
+              let video = res.data.items.shift()
+              this.videoId = video.id.videoId
+            }
             this.videoIds = res.data.items.map(v => v.id.videoId)
           })
       },
