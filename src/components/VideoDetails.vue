@@ -21,7 +21,6 @@
 </template>
 
 <script>
-  import moment from 'moment'
   import linkifyHtml from 'linkifyjs/html'
 
   export default {
@@ -75,7 +74,7 @@
       },
 
       publishedAt () {
-        return moment(this.video.snippet.publishedAt).fromNow()
+        return this.$moment(this.video.snippet.publishedAt).fromNow()
       }
 
     },

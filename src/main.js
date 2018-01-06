@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 
 import axios from 'axios'
+import moment from 'moment'
 
 Object.defineProperties(Vue.prototype, {
   $axios: {
@@ -18,6 +19,11 @@ Object.defineProperties(Vue.prototype, {
           maxResults: 10
         }
       })
+    }
+  },
+  $moment: {
+    get: function () {
+      return moment
     }
   }
 })
