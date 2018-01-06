@@ -24,6 +24,7 @@ Object.defineProperties(Vue.prototype, {
   },
   $moment: {
     get: function () {
+      require('moment-duration-format')
       return moment
     }
   },
