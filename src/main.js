@@ -4,6 +4,18 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
+import axios from 'axios'
+
+Object.defineProperties(Vue.prototype, {
+  $axios: {
+    get: function () {
+      return axios.create({
+        baseURL: 'https://www.googleapis.com/youtube/v3'
+      })
+    }
+  }
+})
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

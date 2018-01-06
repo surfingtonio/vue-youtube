@@ -21,7 +21,6 @@
 </template>
 
 <script>
-  import Axios from 'axios'
   import moment from 'moment'
   import linkifyHtml from 'linkifyjs/html'
 
@@ -44,7 +43,7 @@
       fetchChannel () {
         if (!this.video) return
 
-        Axios.get('https://www.googleapis.com/youtube/v3/channels', {
+        this.$axios.get('/channels', {
           params: {
             key: 'AIzaSyDYBfUyaiZo8V4SQxVBy3JESguMwRa-0Cs',
             part: 'snippet',

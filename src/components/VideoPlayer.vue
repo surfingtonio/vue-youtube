@@ -6,7 +6,6 @@
 </template>
 
 <script>
-  import Axios from 'axios'
   import VideoDetails from './VideoDetails'
 
   export default {
@@ -27,7 +26,7 @@
     methods: {
 
       fetchVideo () {
-        Axios.get('https://www.googleapis.com/youtube/v3/videos', {
+        this.$axios.get('/videos', {
           params: {
             key: 'AIzaSyDYBfUyaiZo8V4SQxVBy3JESguMwRa-0Cs',
             part: 'snippet,player,statistics',

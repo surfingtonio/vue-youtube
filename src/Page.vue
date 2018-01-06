@@ -18,7 +18,6 @@
   import Navbar from './components/Navbar'
   import VideoPlayer from './components/VideoPlayer'
   import VideoList from './components/VideoList'
-  import Axios from 'axios'
 
   export default {
     name: 'page',
@@ -51,7 +50,7 @@
           params = { ...params, q: this.q }
         }
 
-        Axios.get('https://www.googleapis.com/youtube/v3/search', { params })
+        this.$axios.get('/search', { params })
           .then(res => {
             if (!this.videoId) {
               let video = res.data.items.shift()
