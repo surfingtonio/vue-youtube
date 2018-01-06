@@ -45,8 +45,6 @@
 
         this.$axios.get('/channels', {
           params: {
-            key: 'AIzaSyDYBfUyaiZo8V4SQxVBy3JESguMwRa-0Cs',
-            part: 'snippet',
             id: this.video.snippet.channelId
           }
         })

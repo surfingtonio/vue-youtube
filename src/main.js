@@ -10,7 +10,13 @@ Object.defineProperties(Vue.prototype, {
   $axios: {
     get: function () {
       return axios.create({
-        baseURL: 'https://www.googleapis.com/youtube/v3'
+        baseURL: 'https://www.googleapis.com/youtube/v3',
+        params: {
+          key: 'AIzaSyDYBfUyaiZo8V4SQxVBy3JESguMwRa-0Cs',
+          type: 'video',
+          part: 'snippet',
+          maxResults: 10
+        }
       })
     }
   }

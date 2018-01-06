@@ -38,12 +38,7 @@
     methods: {
 
       fetchVideos () {
-        let params = {
-          key: 'AIzaSyDYBfUyaiZo8V4SQxVBy3JESguMwRa-0Cs',
-          type: 'video',
-          part: 'snippet',
-          maxResults: 10
-        }
+        let params = {}
         if (this.videoId) {
           params = { ...params, relatedToVideoId: this.videoId }
         } else {

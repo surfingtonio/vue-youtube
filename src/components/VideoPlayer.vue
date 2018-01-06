@@ -28,7 +28,6 @@
       fetchVideo () {
         this.$axios.get('/videos', {
           params: {
-            key: 'AIzaSyDYBfUyaiZo8V4SQxVBy3JESguMwRa-0Cs',
             part: 'snippet,player,statistics',
             maxWidth: 730,
             id: this.videoId
