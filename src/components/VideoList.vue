@@ -33,7 +33,7 @@
       fetchVideos () {
         this.$axios.get('/videos', {
           params: {
-            part: 'snippet,statistics',
+            part: 'snippet,statistics,contentDetails',
             id: this.videoIds.join(',')
           }
         })

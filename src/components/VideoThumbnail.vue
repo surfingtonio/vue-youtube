@@ -1,10 +1,10 @@
 <template>
   <div class="videoThumbnail clearfix">
-    <a :href="videoUrl" :title="video.snippet.title">
+    <a class="pull-left mr-3" :href="videoUrl" :title="video.snippet.title">
       <img :alt="video.snippet.title"
            :src="video.snippet.thumbnails.medium.url"
-           :width="168"
-           class="pull-left mr-3">
+           :width="168">
+      <div class="videoDuration">{{ videoDuration }}</div>
     </a>
     <a :href="videoUrl" :title="video.snippet.title">
       <h3 class="title">{{ video.snippet.title }}</h3>
@@ -33,6 +33,10 @@
 
       videoUrl () {
         return '/watch/' + this.video.id
+      },
+
+      videoDuration () {
+        return this.$moment.duration(this.video.contentDetails.duration).format('h:mm:ss')
       }
 
     }
@@ -45,7 +49,20 @@
     margin-bottom: .9rem;
   }
   .videoThumbnail a {
+    position: relative;
     color: #000;
+  }
+  .videoThumbnail .videoDuration {
+    opacity: .7;
+    background: #000;
+    color: #fff;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: .78rem;
+    font-weight: 700;
+    padding: 0 .2rem;
+    position: absolute;
+    right: 2%;
+    bottom: 3%;
   }
   .videoThumbnail a:hover {
     text-decoration: none;
