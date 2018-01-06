@@ -21,8 +21,6 @@
 </template>
 
 <script>
-  import linkifyHtml from 'linkifyjs/html'
-
   export default {
     name: 'videoDetails',
     props: [ 'video' ],
@@ -66,7 +64,7 @@
 
       videoDescription () {
         if (this.video) {
-          let desc = linkifyHtml(this.video.snippet.description)
+          let desc = this.$linkifyHtml(this.video.snippet.description)
           return desc.replace(/(?:\r\n|\r|\n)/g, '<br />')
         } else {
           return ''

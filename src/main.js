@@ -6,6 +6,7 @@ import router from './router'
 
 import axios from 'axios'
 import moment from 'moment'
+import linkifyHtml from 'linkifyjs/html'
 
 Object.defineProperties(Vue.prototype, {
   $axios: {
@@ -24,6 +25,11 @@ Object.defineProperties(Vue.prototype, {
   $moment: {
     get: function () {
       return moment
+    }
+  },
+  $linkifyHtml: {
+    get: function () {
+      return linkifyHtml
     }
   }
 })
