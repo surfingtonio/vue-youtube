@@ -23,14 +23,14 @@
     },
 
     created () {
-      if (this.videoIds.length > 0) {
-        this.fetchVideos()
-      }
+      this.fetchVideos()
     },
 
     methods: {
 
       fetchVideos () {
+        if (this.videoIds.length === 0) return
+
         this.$axios.get('/videos', {
           params: {
             part: 'snippet,statistics,contentDetails',
@@ -47,9 +47,7 @@
     watch: {
 
       videoIds () {
-        if (this.videoIds.length > 0) {
-          this.fetchVideos()
-        }
+        this.fetchVideos()
       }
 
     }

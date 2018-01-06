@@ -24,11 +24,7 @@
     computed: {
 
       viewCount () {
-        if (this.video) {
-          return parseInt(this.video.statistics.viewCount).toLocaleString()
-        } else {
-          return ''
-        }
+        return parseInt(this.video.statistics.viewCount).toLocaleString()
       },
 
       videoUrl () {

@@ -55,20 +55,12 @@
     computed: {
 
       viewCount () {
-        if (this.video) {
-          return parseInt(this.video.statistics.viewCount).toLocaleString()
-        } else {
-          return ''
-        }
+        return parseInt(this.video.statistics.viewCount).toLocaleString()
       },
 
       videoDescription () {
-        if (this.video) {
-          let desc = this.$linkifyHtml(this.video.snippet.description)
-          return desc.replace(/(?:\r\n|\r|\n)/g, '<br />')
-        } else {
-          return ''
-        }
+        let desc = this.$linkifyHtml(this.video.snippet.description)
+        return desc.replace(/(?:\r\n|\r|\n)/g, '<br />')
       },
 
       publishedAt () {
