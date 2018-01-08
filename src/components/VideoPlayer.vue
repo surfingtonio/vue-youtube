@@ -11,6 +11,12 @@
     props: {
       videoId: {
         required: true
+      },
+      width: {
+        default: null
+      },
+      height: {
+        default: null
       }
     },
 
@@ -30,7 +36,8 @@
         this.$axios.get('/videos', {
           params: {
             part: 'player',
-            maxWidth: 730,
+            maxWidth: this.width,
+            maxHeight: this.height,
             id: this.videoId
           }
         })
