@@ -23,7 +23,11 @@
 <script>
   export default {
     name: 'videoDetails',
-    props: [ 'videoId' ],
+    props: {
+      videoId: {
+        required: true
+      }
+    },
 
     data () {
       return {
