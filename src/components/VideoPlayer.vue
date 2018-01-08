@@ -1,8 +1,5 @@
 <template>
-  <div class="videoPlayer" v-if="video">
-    <span v-html="video.player.embedHtml"></span>
-    <VideoDetails :video="video"/>
-  </div>
+  <div v-if="video" v-html="video.player.embedHtml"/>
 </template>
 
 <script>
@@ -28,7 +25,7 @@
       fetchVideo () {
         this.$axios.get('/videos', {
           params: {
-            part: 'snippet,player,statistics',
+            part: 'player',
             maxWidth: 730,
             id: this.videoId
           }
@@ -50,8 +47,3 @@
 
   }
 </script>
-
-<style>
-  .videoPlayer {
-  }
-</style>

@@ -23,16 +23,17 @@
 <script>
   export default {
     name: 'videoDetails',
-    props: [ 'video' ],
+    props: [ 'videoId' ],
 
     data () {
       return {
+        video: '',
         channel: ''
       }
     },
 
     created () {
-      this.fetchChannel()
+      this.fetchVideo()
     },
 
     methods: {
@@ -47,6 +48,20 @@
         })
           .then(res => {
             this.channel = res.data.items[0]
+          })
+      },
+
+      fetchVideo () {
+        if (!this.videoId) return
+
+        this.$axios.get('/videos', {
+          params: {
+            part: 'snippet,statistics',
+            id: this.videoId
+          }
+        })
+          .then(res => {
+            this.video = res.data.items[0]
           })
       }
 
