@@ -8,7 +8,11 @@
   export default {
     name: 'videoPlayer',
     components: { VideoDetails },
-    props: [ 'videoId' ],
+    props: {
+      videoId: {
+        required: true
+      }
+    },
 
     data () {
       return {
