@@ -4,33 +4,16 @@
       <img src="../assets/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
       Vue YouTube
     </a>
-    <form action="javascript:void(0)" class="form-inline">
-      <div class="form-group">
-        <input type="text" class="form-control mr-2" name="search" placeholder="Search" v-model="q">
-        <button class="btn btn-success" @click="searchEnter">
-          <i class="fa fa-search"></i>
-        </button>
-      </div>
-    </form>
+    <Search class="d-none d-sm-block" @searchEnter="$emit('searchEnter', $event)"/>
   </nav>
 </template>
 
 <script>
+  import Search from './Search'
+
   export default {
-
-    data () {
-      return {
-        q: ''
-      }
-    },
-
-    methods: {
-      searchEnter () {
-        this.$emit('searchEnter', this.q)
-        this.q = ''
-      }
-    }
-
+    name: 'navbar',
+    components: { Search }
   }
 </script>
 
