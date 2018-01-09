@@ -1,0 +1,7 @@
+<template>
+  <footer class="py-5 bg-dark text-white">
+    <div class="container">
+      <p class="m-0 text-center">Copyright &copy; Vue YouTube 2018</p>
+    </div>
+  </footer>
+</template>

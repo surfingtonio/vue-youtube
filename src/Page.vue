@@ -27,11 +27,15 @@
         </div>
       </div>
     </div>
+
+    <app-footer />
+
   </div>
 </template>
 
 <script>
   import AppNavbar from './components/Navbar'
+  import AppFooter from './components/Footer'
   import YtSearch from './components/Search'
   import YtVideoPlayer from './components/VideoPlayer.vue'
   import YtVideoDetails from './components/VideoDetails.vue'
@@ -39,7 +43,7 @@
 
   export default {
     name: 'page',
-    components: { AppNavbar, YtSearch, YtVideoPlayer, YtVideoDetails, YtVideoList },
+    components: { AppNavbar, AppFooter, YtSearch, YtVideoPlayer, YtVideoDetails, YtVideoList },
 
     data () {
       return {

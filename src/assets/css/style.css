@@ -6,6 +6,10 @@ body {
   min-width: 380px
 }
 
+footer {
+  margin-top: 30px;
+}
+
 /* http://alistapart.com/article/creating-intrinsic-ratios-for-video */
 .videoPlayer div {
   position: relative;
