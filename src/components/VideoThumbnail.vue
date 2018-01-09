@@ -7,7 +7,7 @@
       <div class="videoDuration">{{ videoDuration }}</div>
     </a>
     <a :href="videoUrl" :title="video.snippet.title">
-      <h3 class="title">{{ video.snippet.title }}</h3>
+      <h3 class="title" v-truncate:36="video.snippet.title" />
       <div class="author">{{ video.snippet.channelTitle }}</div>
       <div class="views">{{ viewCount }} views</div>
     </a>
