@@ -7,7 +7,7 @@
 
     <div class="container px-0">
       <div class="row no-gutters">
-        <div class="col-md-8">
+        <div class="col-lg-8">
 
           <Search class="d-block d-sm-none mb-4" @searchEnter="updateQuery" />
 
@@ -24,7 +24,7 @@
           <!-- /.videoDetailsWrapper -->
 
         </div>
-        <div class="col-md-4">
+        <div class="col-lg-4">
 
           <!-- videoListWrapper -->
           <div class="videoListWrapper">

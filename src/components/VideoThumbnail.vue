@@ -1,16 +1,20 @@
 <template>
-  <div class="videoThumbnail clearfix">
-    <a class="pull-left mr-3" :href="videoUrl" :title="video.snippet.title">
-      <img :alt="video.snippet.title"
-           :src="video.snippet.thumbnails.medium.url"
-           :width="168">
-      <div class="videoDuration">{{ videoDuration }}</div>
-    </a>
-    <a :href="videoUrl" :title="video.snippet.title">
-      <h3 class="title">{{ video.snippet.title }}</h3>
-      <div class="author">{{ video.snippet.channelTitle }}</div>
-      <div class="views">{{ viewCount }} views</div>
-    </a>
+  <div class="videoThumbnail row no-gutters">
+    <div class="col-6">
+      <a class="pull-left mr-3" :href="videoUrl" :title="video.snippet.title">
+        <img :alt="video.snippet.title"
+             :src="video.snippet.thumbnails.medium.url"
+             :width="168">
+        <div class="videoDuration">{{ videoDuration }}</div>
+      </a>
+    </div>
+    <div class="col-6 pl-2">
+      <a :href="videoUrl" :title="video.snippet.title">
+        <h3 class="title">{{ video.snippet.title }}</h3>
+        <div class="author">{{ video.snippet.channelTitle }}</div>
+        <div class="views">{{ viewCount }} views</div>
+      </a>
+    </div>
   </div>
 </template>
 
