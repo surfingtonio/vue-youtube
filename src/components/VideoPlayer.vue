@@ -1,13 +1,10 @@
 <template>
-  <div v-if="video" v-html="video.player.embedHtml"/>
+  <div v-if="video" v-html="video.player.embedHtml" />
 </template>
 
 <script>
-  import VideoDetails from './VideoDetails'
-
   export default {
-    name: 'videoPlayer',
-    components: { VideoDetails },
+    name: 'yt-video-player',
     props: {
       videoId: {
         required: true

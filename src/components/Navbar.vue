@@ -12,7 +12,7 @@
   import Search from './Search'
 
   export default {
-    name: 'navbar',
+    name: 'app-navbar',
     components: { Search }
   }
 </script>

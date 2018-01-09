@@ -16,7 +16,7 @@
 
 <script>
   export default {
-    name: 'videoThumbnail',
+    name: 'yt-video-thumbnail',
     props: {
       video: { required: true }
     },

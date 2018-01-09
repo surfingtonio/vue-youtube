@@ -13,7 +13,7 @@
 
 <script>
   export default {
-    name: 'search',
+    name: 'yt-search',
 
     data () {
       return {

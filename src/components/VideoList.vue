@@ -1,17 +1,18 @@
 <template>
   <div class="videoList">
-    <VideoThumbnail
-      :video="video" v-for="video in videos"
-      :key="video.id.videoId"/>
+    <yt-video-thumbnail
+      v-for="video in videos"
+      :video="video"
+      :key="video.id.videoId" />
   </div>
 </template>
 
 <script>
-  import VideoThumbnail from './VideoThumbnail'
+  import YtVideoThumbnail from './VideoThumbnail'
 
   export default {
-    name: 'videoList',
-    components: { VideoThumbnail },
+    name: 'yt-video-list',
+    components: { YtVideoThumbnail },
     props: {
       videoIds: { default: () => [] }
     },

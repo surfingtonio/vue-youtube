@@ -1,36 +1,28 @@
 <template>
   <div id="app">
 
-    <!-- Navbar -->
-    <Navbar @searchEnter="updateQuery"/>
-    <!-- /Navbar -->
+    <app-navbar @searchEnter="updateQuery" />
 
     <div class="container px-0">
       <div class="row no-gutters">
         <div class="col-lg-8">
 
-          <Search class="d-block d-sm-none mb-4" @searchEnter="updateQuery" />
+          <yt-search class="d-block d-sm-none mb-4" @searchEnter="updateQuery" />
 
-          <!-- videoPlayer -->
           <div class="videoPlayer">
-            <VideoPlayer v-if="videoId" :videoId="videoId" :width="videoWidth" />
+            <yt-video-player v-if="videoId" :videoId="videoId" :width="videoWidth" />
           </div>
-          <!-- /.videoPlayer -->
 
-          <!-- videoDetailsWrapper -->
           <div class="videoDetailsWrapper" v-if="videoId">
-            <VideoDetails :videoId="videoId"/>
+            <yt-video-details :videoId="videoId" />
           </div>
-          <!-- /.videoDetailsWrapper -->
 
         </div>
         <div class="col-lg-4">
 
-          <!-- videoListWrapper -->
           <div class="videoListWrapper">
-            <VideoList :videoIds="videoIds"/>
+            <yt-video-list :videoIds="videoIds" />
           </div>
-          <!-- /.videoListWrapper -->
 
         </div>
       </div>
@@ -39,15 +31,15 @@
 </template>
 
 <script>
-  import Navbar from './components/Navbar'
-  import VideoPlayer from './components/VideoPlayer'
-  import Search from './components/Search'
-  import VideoDetails from './components/VideoDetails'
-  import VideoList from './components/VideoList'
+  import AppNavbar from './components/Navbar'
+  import YtSearch from './components/Search'
+  import YtVideoPlayer from './components/VideoPlayer.vue'
+  import YtVideoDetails from './components/VideoDetails.vue'
+  import YtVideoList from './components/VideoList.vue'
 
   export default {
     name: 'page',
-    components: { Navbar, VideoPlayer, Search, VideoDetails, VideoList },
+    components: { AppNavbar, YtSearch, YtVideoPlayer, YtVideoDetails, YtVideoList },
 
     data () {
       return {

@@ -22,7 +22,7 @@
 
 <script>
   export default {
-    name: 'videoDetails',
+    name: 'yt-video-details',
     props: {
       videoId: {
         required: true
