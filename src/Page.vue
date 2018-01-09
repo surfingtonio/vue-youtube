@@ -1,14 +1,37 @@
 <template>
   <div id="app">
+
+    <!-- Navbar -->
     <Navbar @searchEnter="updateQuery"/>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8" v-if="videoId">
-          <VideoPlayer :videoId="videoId"/>
-          <VideoDetails :videoId="videoId"/>
+    <!-- /Navbar -->
+
+    <div class="container px-0">
+      <div class="row no-gutters">
+        <div class="col-md-8">
+
+          <Search class="d-block d-sm-none mb-4" @searchEnter="updateQuery" />
+
+          <!-- videoPlayer -->
+          <div class="videoPlayer">
+            <VideoPlayer v-if="videoId" :videoId="videoId" :width="videoWidth" />
+          </div>
+          <!-- /.videoPlayer -->
+
+          <!-- videoDetailsWrapper -->
+          <div class="videoDetailsWrapper" v-if="videoId">
+            <VideoDetails :videoId="videoId"/>
+          </div>
+          <!-- /.videoDetailsWrapper -->
+
         </div>
         <div class="col-md-4">
-          <VideoList :videoIds="videoIds"/>
+
+          <!-- videoListWrapper -->
+          <div class="videoListWrapper">
+            <VideoList :videoIds="videoIds"/>
+          </div>
+          <!-- /.videoListWrapper -->
+
         </div>
       </div>
     </div>
@@ -18,18 +41,20 @@
 <script>
   import Navbar from './components/Navbar'
   import VideoPlayer from './components/VideoPlayer'
+  import Search from './components/Search'
   import VideoDetails from './components/VideoDetails'
   import VideoList from './components/VideoList'
 
   export default {
     name: 'page',
-    components: { Navbar, VideoPlayer, VideoDetails, VideoList },
+    components: { Navbar, VideoPlayer, Search, VideoDetails, VideoList },
 
     data () {
       return {
         'q': 'samsung s8',
         'videoId': this.$route.params.id || '',
-        'videoIds': []
+        'videoIds': [],
+        'videoWidth': null
       }
     },
 
@@ -59,5 +84,15 @@
       }
 
     }
+
   }
 </script>
+
+<style scoped>
+  .videoDetailsWrapper {
+    padding: 0 15px;
+  }
+  .videoListWrapper {
+    padding: 0 15px
+  }
+</style>
