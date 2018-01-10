@@ -4,16 +4,16 @@
       <img src="../assets/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
       Vue YouTube
     </a>
-    <Search class="d-none d-sm-block" @searchEnter="$emit('searchEnter', $event)"/>
+    <yt-search class="d-none d-md-block" @searchEnter="$emit('searchEnter', $event)" />
   </nav>
 </template>
 
 <script>
-  import Search from './Search'
+  import YtSearch from './Search'
 
   export default {
     name: 'app-navbar',
-    components: { Search }
+    components: { YtSearch }
   }
 </script>
 
