@@ -41,7 +41,8 @@
       },
 
       videoDuration () {
-        return this.$moment.duration(this.video.contentDetails.duration).format('h:mm:ss')
+        let trim = this.video.contentDetails.duration.indexOf('M') === -1 ? { trim: 'mid' } : { trim: 'large' }
+        return this.$moment.duration(this.video.contentDetails.duration).format('h:mm:ss', trim)
       }
 
     }
