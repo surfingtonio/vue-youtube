@@ -37,17 +37,6 @@ Object.defineProperties(Vue.prototype, {
 
 Vue.config.productionTip = false
 
-Vue.directive('truncate', {
-  bind (el, binding, vnode) {
-    if (binding.arg) {
-      let pattern = new RegExp('^(.{' + binding.arg + '}[^\\s]*).*')
-      el.innerText = binding.value.replace(pattern, '$1')
-    } else {
-      el.innerText = binding.value
-    }
-  }
-})
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

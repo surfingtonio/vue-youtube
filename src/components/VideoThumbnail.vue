@@ -7,7 +7,7 @@
       <div class="videoDuration">{{ videoDuration }}</div>
     </a>
     <a :href="videoUrl" :title="video.snippet.title">
-      <h3 class="title" v-truncate:36="video.snippet.title" />
+      <h3 class="title">{{ truncateTitle(video.snippet.title, 36) }}</h3>
       <div class="author">{{ video.snippet.channelTitle }}</div>
       <div class="views">{{ viewCount }} views</div>
     </a>
@@ -19,6 +19,15 @@
     name: 'yt-video-thumbnail',
     props: {
       video: { required: true }
+    },
+
+    methods: {
+
+      truncateTitle (title, chars) {
+        let pattern = new RegExp('^(.{' + chars + '}[^\\s]*).*')
+        return title.replace(pattern, '$1')
+      }
+
     },
 
     computed: {
