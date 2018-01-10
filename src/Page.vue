@@ -73,7 +73,7 @@
     data () {
       return {
         'q': 'samsung s8',
-        'videoId': this.$route.params.id || '',
+        'videoId': this.$route.params.id || this.$cookie.get('videoId') || '',
         'videoIds': [],
         'videoWidth': null
       }
@@ -94,6 +94,7 @@
               let video = res.data.items.shift()
               this.videoId = video.id.videoId
             }
+            this.$cookie.set('videoId', this.videoId)
             this.videoIds = res.data.items.map(v => v.id.videoId)
           })
       },

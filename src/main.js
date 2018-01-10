@@ -7,6 +7,9 @@ import router from './router'
 import axios from 'axios'
 import moment from 'moment'
 import linkifyHtml from 'linkifyjs/html'
+import VueCookie from 'vue-cookie'
+
+Vue.use(VueCookie)
 
 Object.defineProperties(Vue.prototype, {
   $axios: {
