@@ -72,7 +72,7 @@
 
     data () {
       return {
-        'q': 'samsung s8',
+        'q': '',
         'videoId': this.$route.params.id || this.$cookie.get('videoId') || '',
         'videoIds': [],
         'videoWidth': null
@@ -86,17 +86,34 @@
     methods: {
 
       fetchVideos () {
-        this.$axios.get('/search', this.videoId
-          ? { params: { relatedToVideoId: this.videoId } }
-          : { params: { q: this.q } })
-          .then(res => {
-            if (!this.videoId) {
-              let video = res.data.items.shift()
-              this.videoId = video.id.videoId
+        if (this.videoId || this.q) {
+          this.$axios.get('/search', this.videoId
+            ? { params: { relatedToVideoId: this.videoId } }
+            : { params: { q: this.q } })
+            .then(res => {
+              if (!this.videoId) {
+                let video = res.data.items.shift()
+                this.videoId = video.id.videoId
+              }
+              this.$cookie.set('videoId', this.videoId)
+              this.videoIds = res.data.items.map(v => v.id.videoId)
+            })
+        } else {
+          this.$axios.get('/videos', {
+            params: {
+              chart: 'mostPopular',
+              regionCode: 'CA',
+              part: 'snippet,contentDetails,statistics',
+              videoCategoryId: ''
             }
-            this.$cookie.set('videoId', this.videoId)
-            this.videoIds = res.data.items.map(v => v.id.videoId)
           })
+            .then(res => {
+              let video = res.data.items.shift()
+              this.videoId = video.id
+              this.$cookie.set('videoId', this.videoId)
+              this.videoIds = res.data.items.map(v => v.id)
+            })
+        }
       },
 
       updateQuery (q) {
