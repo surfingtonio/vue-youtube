@@ -100,9 +100,6 @@
 </script>
 
 <style scoped>
-  .videoDetails {
-    padding: 1rem 0;
-  }
   .heading {
     padding: .5rem 0;
   }

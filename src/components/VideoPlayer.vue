@@ -1,5 +1,5 @@
 <template>
-  <div v-if="video" v-html="video.player.embedHtml" />
+  <div class="videoPlayer" v-if="video" v-html="video.player.embedHtml" />
 </template>
 
 <script>
