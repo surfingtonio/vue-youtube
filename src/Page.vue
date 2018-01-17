@@ -3,54 +3,11 @@
 
     <app-navbar @searchEnter="updateQuery" />
 
-    <!-- Large screen layout -->
-    <div class="container d-none d-lg-block">
-      <div class="row no-gutters">
-        <div class="col-8">
-          <yt-video-player class="mb-4" v-if="videoId" :videoId="videoId" />
-          <yt-video-details v-if="videoId" :videoId="videoId" />
-        </div>
-        <div class="col-4">
-          <yt-video-list class="pl-3" :videoIds="videoIds" />
-        </div>
-      </div>
-    </div>
-
-    <!-- Medium screen layout -->
-    <div class="container d-none d-md-block d-lg-none">
-      <div class="row no-gutters mb-4">
-        <div class="col">
-          <yt-video-player v-if="videoId" :videoId="videoId" />
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-6">
-          <yt-video-details v-if="videoId" :videoId="videoId" />
-        </div>
-        <div class="col-6">
-          <yt-video-list :videoIds="videoIds" />
-        </div>
-      </div>
-    </div>
-
-    <!-- Small screen layout -->
-    <div class="container px-0 d-sm-block d-md-none">
-      <yt-search class="mb-4 d-sm-block d-md-none" @searchEnter="updateQuery" />
-      <div class="row no-gutters mb-4">
-        <div class="col">
-          <yt-video-player v-if="videoId" :videoId="videoId" />
-        </div>
-      </div>
-      <div class="row no-gutters">
-        <div class="col px-3">
-          <yt-video-details v-if="videoId" :videoId="videoId" />
-        </div>
-      </div>
-      <div class="row no-gutters">
-        <div class="col px-3">
-          <yt-video-list :videoIds="videoIds" />
-        </div>
-      </div>
+    <div class="main container px-0">
+      <yt-search class="mb-4 w-100 d-block d-md-none" @searchEnter="updateQuery" />
+      <yt-video-player v-if="videoId" :videoId="videoId" />
+      <yt-video-details v-if="videoId" :videoId="videoId" />
+      <yt-video-list :videoIds="videoIds" />
     </div>
 
     <app-footer />

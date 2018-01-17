@@ -6,12 +6,12 @@ footer {
   margin-top: 30px;
 }
 
-/* http://alistapart.com/article/creating-intrinsic-ratios-for-video */
 .videoPlayer {
   position: relative;
-  padding-bottom: 56.25%; /* 16:9 */
+  padding-bottom: 0;
   height: 0;
 }
+
 .videoPlayer iframe {
   position: absolute;
   top: 0;
@@ -20,14 +20,130 @@ footer {
   height: 100%;
 }
 
-/* Medium screen thumbnail size */
-@media (min-width: 768px) and (max-width: 1199.99px) {
-  div.videoThumbnail img {
-    width: 120px;
+.videoDetails,
+.videoList {
+  width: 100%;
+  overflow: hidden;
+  padding: 20px 0 0;
+}
+
+.videoThumbnail a {
+  float: left;
+  margin: 0 !important;
+  padding: 0;
+}
+
+.videoThumbnail a:nth-child(1) {
+  width: 45%;
+  max-width: 168px;
+}
+
+.videoThumbnail a:nth-child(2) {
+  display: content-box;
+  padding-left: 10px;
+  width: 55%;
+}
+
+.videoThumbnail img {
+  width: 100%;
+}
+
+.videoThumbnail .title,
+.videoThumbnail .author,
+.videoThumbnail .views {
+  font-size: .9em;
+}
+
+.videoThumbnail .author {
+  white-space: nowrap;
+}
+
+/* Flex layout */
+@supports ((display: -webkit-box) or (display: flex)) {
+  div.main {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
   }
-  div.videoThumbnail h3.title,
-  div.videoThumbnail div.author,
-  div.videoThumbnail div.views {
-    font-size: .8em;
+
+  .videoThumbnail {
+    display: block;
+    width: 100%;
+  }
+
+  /* Large screen layout */
+  @media (min-width: 992px) {
+    .videoPlayer {
+      width: 66%;
+      padding: 0 0 37.125%;
+    }
+
+    .videoDetails {
+      width: 66%;
+      padding-top: 20px;
+    }
+
+    .videoList {
+      margin-top: -37.125%;
+      width: 34%;
+      padding: 0 15px;
+    }
+  }
+
+  /* Medium screen layout */
+  @media (max-width: 991px) {
+    .videoPlayer {
+      width: 100%;
+      padding: 0 0 56.25%;
+    }
+
+    .videoDetails {
+      width: 60%;
+      padding-top: 20px;
+    }
+
+    .videoList {
+      width: 40%;
+      padding: 20px 0 0 20px;
+    }
+  }
+
+  /* Small screen layout */
+  @media (max-width: 767px) {
+    .videoDetails,
+    .videoList {
+      width: 100%;
+      padding: 20px 0 0;
+    }
+  }
+
+  /* Smaller thumbnail size */
+  @media (min-width: 768px) and (max-width: 1199px) {
+    .videoThumbnail .title,
+    .videoThumbnail .author,
+    .videoThumbnail .views {
+      font-size: .8em !important;
+    }
   }
 }
+
+/* Mobile screen padding */
+@media (max-width: 575px) {
+  .videoDetails,
+  .videoList {
+    padding: 20px 20px 0;
+  }
+}
+
+/* Older browsers layout */
+@supports not ((display: -webkit-box) or (display: flex)) {
+  @media (min-width: 768px) {
+    .videoThumbnail {
+      display: inline-block;
+      width: 50%;
+    }
+  }
+}
+
