@@ -1,0 +1,6 @@
+{
+  "host": "example.com",
+  "user": "root",
+  "password": "123",
+  "port": 21
+}
